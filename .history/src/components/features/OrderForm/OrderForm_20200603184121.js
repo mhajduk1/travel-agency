@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PageTitle from '../OrderForm/OrderForm';
 import {Row, Col, Grid} from 'react-flexbox-grid';
-import OrderSummary from '../OrderSummary/OrderSummary';
-
 
 class OrderForm extends React.Component {
   render() {
-    const {tripCost, options} = this.props;
+    const {cost} = this.props;
     return (
       <Grid>
         <Row>
           <Col xs={12}>
-            <OrderSummary tripCost={tripCost} options={options}/>
+            <PageTitle text='Trip options' />
+            <OrderForm tripCost={cost} />
           </Col>
         </Row>
       </Grid>
@@ -20,8 +20,7 @@ class OrderForm extends React.Component {
 }
 
 OrderForm.propTypes = {
-  options: PropTypes.object,
-  tripCost: PropTypes.number,
+  cost: PropTypes.number,
 };
 
 export default OrderForm; 

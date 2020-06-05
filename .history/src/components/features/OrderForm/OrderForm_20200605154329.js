@@ -20,8 +20,8 @@ class OrderForm extends React.Component {
 }
 
 OrderForm.propTypes = {
-  options: PropTypes.object,
-  tripCost: PropTypes.number,
+    options: PropTypes.object,
+    tripCost: PropTypes.number,
 };
 
 export default OrderForm; 
