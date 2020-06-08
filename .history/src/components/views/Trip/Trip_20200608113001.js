@@ -10,7 +10,7 @@ import DetailsBox from '../../common/DetailsBox/DetailsBox';
 import DetailsImage from '../../common/DetailsImage/DetailsImage';
 import List from '../../common/List/List';
 import ListItem from '../../common/ListItem/ListItem';
-import OrderForm from '../../features/OrderForm/OrderFormContainer';
+import OrderSummary from '../../features/OrderSummary/OrderSummaryContainer.js';
 
 import styles from './Trip.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
@@ -49,13 +49,8 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         </Row>
       </Grid>
       <Grid>
-        <Col xs={12}>
-          <PageTitle text='Trip options'/>
-          <OrderForm />
-        </Col>
-      </Grid>
-      <Grid>
         <PageTitle text={`About ${country.name}`} />
+        <OrderSummary />
       </Grid>
       <DetailsBox>
         <DetailsImage>
