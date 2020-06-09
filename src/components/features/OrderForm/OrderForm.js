@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col, Grid} from 'react-flexbox-grid';
 import OrderSummary from '../OrderSummary/OrderSummary';
-import PageTitle from '../OrderForm/OrderForm';
+import PageTitle from '../../common/PageTitle/PageTitle';
 
 
 

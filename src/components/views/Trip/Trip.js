@@ -50,7 +50,6 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
       </Grid>
       <Grid>
         <Col xs={12}>
-          <PageTitle text='Trip options'/>
           <OrderForm />
         </Col>
       </Grid>
