@@ -49,11 +49,6 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         </Row>
       </Grid>
       <Grid>
-        <Col xs={12}>
-          <OrderForm />
-        </Col>
-      </Grid>
-      <Grid>
         <PageTitle text={`About ${country.name}`} />
       </Grid>
       <DetailsBox>
@@ -72,6 +67,14 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Row>
         </Grid>
       </DetailsBox>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <PageTitle text='Trip options' />
+            <OrderForm tripCost={cost} />
+          </Col>
+        </Row>
+      </Grid>
     </Section>
   );
 };
