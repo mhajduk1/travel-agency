@@ -1,29 +1,33 @@
+  
 import React from 'react';
+import styles from './OrderOption.scss';
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
+import PropTypes from 'prop-types';
 
 class OrderOptionDate extends React.Component {
-    state = {
-      startDate: new Date(),
-    };
-   
-    handleChange = date => {
-      this.setState({
-        startDate: date,
-      });
-    };
-   
-    render() {
-      return (
+
+  render() {
+    const { currentValue, setOptionValue} = this.props;
+
+    return (
+      <div>
         <DatePicker
-          selected={this.state.date}
-          onSelect={this.handleSelect} //when day is clicked
-          onChange={this.handleChange} //only when value has changed
+          className={styles.input}
+          selected={currentValue}
+          onChange={setOptionValue}
+          dateFormat="dd/MM/yyyy"
+          minDate={addDays(new Date(), 14)}
         />
-      );
-    }
+        {`(min. 14 days from today)`}
+      </div>
+    );
+  }
 }
+
+OrderOptionDate.propTypes = {
+  currentValue: PropTypes.date,
+  setOptionValue: PropTypes.func,
+};
 
 export default OrderOptionDate;
