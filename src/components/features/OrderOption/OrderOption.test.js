@@ -126,7 +126,7 @@ describe('Component OrderOption', () => {
           it('should run setOrderOption function on click', () => {
             renderedSubcomponent.find('.icon .icon').at(0).simulate('click');
             expect(mockSetOrderOption).toBeCalledTimes(1);
-            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: mockProps.currentValue });
           });
 
           break;
