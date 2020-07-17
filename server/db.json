@@ -1,0 +1,18 @@
+{
+  "orders": [
+    {
+      "car-rental": "suv",
+      "accommodation": "suite",
+      "features": [],
+      "adults": 1,
+      "children": 1,
+      "name": "",
+      "contact": "gfgfgfgfgfgf",
+      "start-date": "31.07.2020",
+      "totalCost": "$210,148",
+      "tripId": "5cc1d1014c75f672e46ef6d7",
+      "tripName": "Marvelous travel in fantastic Timor-Leste",
+      "id": 1
+    }
+  ]
+}
