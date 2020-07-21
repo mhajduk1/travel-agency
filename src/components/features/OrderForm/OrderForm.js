@@ -13,7 +13,7 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import Button from '../../common/Button/Button';
 
 
-const sendOrder = (options, tripCost, tripId, tripName) => {
+const sendOrder = (options, tripCost, tripId, tripName,countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   console.log('name', name);
@@ -24,6 +24,7 @@ const sendOrder = (options, tripCost, tripId, tripName) => {
     name,
     tripId,
     tripName,
+    countryCode,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -38,9 +39,7 @@ const sendOrder = (options, tripCost, tripId, tripName) => {
   };
 
   fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
+    .then(function(parsedResponse){
       console.log('parsedResponse', parsedResponse);
 
       const { name, contact } = options;
@@ -51,10 +50,14 @@ const sendOrder = (options, tripCost, tripId, tripName) => {
       else if (contact == '') {
         window.alert('Fill your contact');
       }
+    }).then(function(response){
+      return response.json();
     });
-};
 
-const OrderForm = ({tripCost, options, setOrderOption, tripId, tripName}) => (
+};
+const OrderForm = ({tripCost, options, setOrderOption, tripId, tripName, countryCode}) => (
+  console.log(countryCode),
+
   <Grid>
     <Row>
       {pricing.map(option => (
@@ -64,7 +67,7 @@ const OrderForm = ({tripCost, options, setOrderOption, tripId, tripName}) => (
       ))}
       <Col xs={12}>
         <OrderSummary tripCost={tripCost} options={options}/>
-        <Button onClick={() => sendOrder(options, tripCost, tripId, tripName)}>Order now!</Button>
+        <Button onClick={() => sendOrder(options, tripCost, tripId, tripName, countryCode)}>Order now!</Button>
       </Col>
     </Row>
   </Grid>
@@ -76,6 +79,7 @@ OrderForm.propTypes = {
   setOrderOption: PropTypes.func,
   tripId: PropTypes.string,
   tripName: PropTypes.string,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;
