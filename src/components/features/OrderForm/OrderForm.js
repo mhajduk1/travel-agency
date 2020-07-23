@@ -4,7 +4,6 @@ import OrderSummary from '../OrderSummary/OrderSummary';
 import pricing from '../../../data/pricing.json';
 import OrderOption from '../OrderOption/OrderOption';
 
-
 import {Row, Col, Grid} from 'react-flexbox-grid';
 import settings from '../../../data/settings.js';
 import {formatPrice} from '../../../utils/formatPrice';
@@ -12,11 +11,13 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 
 import Button from '../../common/Button/Button';
 
-
 const sendOrder = (options, tripCost, tripId, tripName,countryCode) => {
+
+  const { name, contact } = options;
+
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
-  console.log('name', name);
+  // console.log('name', name);
 
   const payload = {
     ...options,
@@ -26,7 +27,7 @@ const sendOrder = (options, tripCost, tripId, tripName,countryCode) => {
     tripName,
     countryCode,
   };
-
+  console.log(countryCode);
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
   const fetchOptions = {
@@ -38,25 +39,19 @@ const sendOrder = (options, tripCost, tripId, tripName,countryCode) => {
     body: JSON.stringify(payload),
   };
 
-  fetch(url, fetchOptions)
-    .then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-
-      const { name, contact } = options;
-
-      if (name == '') {
-        window.alert('Fill your name');
-      }
-      else if (contact == '') {
-        window.alert('Fill your contact');
-      }
-    }).then(function(response){
-      return response.json();
-    });
-
+  if (name != '' && contact != '') {
+    fetch(url, fetchOptions)
+      .then(function(){
+        console.log('Order sent');
+      });
+  }
+  else {
+    window.alert('Name and contact fields are required');
+  }
 };
 const OrderForm = ({tripCost, options, setOrderOption, tripId, tripName, countryCode}) => (
   console.log(countryCode),
+  console.log(options),
 
   <Grid>
     <Row>
@@ -79,7 +74,7 @@ OrderForm.propTypes = {
   setOrderOption: PropTypes.func,
   tripId: PropTypes.string,
   tripName: PropTypes.string,
-  countryCode: PropTypes.string,
+  countryCode: PropTypes.func,
 };
 
 export default OrderForm;

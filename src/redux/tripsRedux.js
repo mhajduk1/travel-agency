@@ -38,8 +38,17 @@ export const getFilteredTrips = ({trips, filters}) => {
 };
 
 export const getTripById = ({trips}, tripId) => {
-  
+
   const filtered = trips.filter(trip => trip.id == tripId);
+
+  // TODO - filter trips by tripId DONE
+
+  return filtered.length ? filtered[0] : {error: true};
+};
+
+export const getCountryCodeByTripId = ({trips}, countryCode) => {
+
+  const filtered = trips.filter(trip => trip.country.code == countryCode);
 
   // TODO - filter trips by tripId DONE
 
