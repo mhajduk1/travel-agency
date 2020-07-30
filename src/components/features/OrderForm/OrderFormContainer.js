@@ -3,9 +3,9 @@ import OrderForm from './OrderForm';
 import {getOrderOptions, setOrderOption} from '../../../redux/orderRedux';
 import {getCountryCodeByTripId} from '../../../redux/tripsRedux'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   options: getOrderOptions(state),
-  countryCode: getCountryCodeByTripId(state),
+  countryCode: getCountryCodeByTripId(state, props.tripId),
   //const trip = getTripById(state, props.match.params.id);
 });
 
