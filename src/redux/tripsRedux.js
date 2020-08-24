@@ -46,20 +46,21 @@ export const getTripById = ({trips}, tripId) => {
   return filtered.length ? filtered[0] : {error: true};
 };
 
-export const getCountryCodeByTripId = ({trips}, tripId) => {
-
-  const filtered = trips.filter(trip => trip.id == tripId);
-  console.log(filtered);
-return filtered.length ? filtered[0] : {error: true};
-};
-
-// export const getCountryCodeByTripId = ({trips}, tripId) => {
+//  export const getCountryCodeByTripId = ({trips}, tripId) => {
 
 //   const filtered = trips.filter(trip => trip.id == tripId);
-//   const find = filtered.find(trips.country.code);
-//   console.log(find);
-//   return find;
+//   console.log(filtered.country);
+//   return filtered.length ? filtered[0] : {error: true};
 // };
+
+  export const getCountryCodeByTripId = ({trips}, tripId) => {
+
+    const find = trips.find( function(trip){
+        return tripId === trip.id;
+    });
+    // przerobić na strzałkową
+    return find.country.code;
+  };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
 

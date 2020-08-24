@@ -2,16 +2,17 @@ import {connect} from 'react-redux';
 import OrderForm from './OrderForm';
 import {getOrderOptions, setOrderOption} from '../../../redux/orderRedux';
 import {getCountryCodeByTripId} from '../../../redux/tripsRedux'
+const mapStateToProps = (state, props) => {
 
-const mapStateToProps = (state, props) => ({
-  options: getOrderOptions(state),
-  countryCode: getCountryCodeByTripId(state, props.tripId),
-  //const trip = getTripById(state, props.match.params.id);
-});
+
+  return {
+    options: getOrderOptions(state),
+    countryCode: getCountryCodeByTripId(state, props.tripId),
+  }
+};
 
 const mapDispatchToProps = (dispatch) => ({
   setOrderOption: option => dispatch(setOrderOption(option)),
 });
-//
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);

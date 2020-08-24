@@ -50,7 +50,7 @@ const sendOrder = (options, tripCost, tripId, tripName,countryCode) => {
   }
 };
 const OrderForm = ({tripCost, options, setOrderOption, tripId, tripName, countryCode}) => (
-  // console.log(countryCode),
+   console.log(countryCode),
   // console.log(options),
 
   <Grid>
@@ -74,7 +74,7 @@ OrderForm.propTypes = {
   setOrderOption: PropTypes.func,
   tripId: PropTypes.string,
   tripName: PropTypes.string,
-  countryCode: PropTypes.object,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;
