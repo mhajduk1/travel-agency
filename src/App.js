@@ -16,7 +16,6 @@ import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
 import CountryContainer from './components/views/Country/CountryContainer';
 import TripContainer from './components/views/Trip/TripContainer';
-import Contact from './components/views/Info/InfoContainer';
 import CountriesContainer from './components/views/Countries/CountriesContainer';
 import RegionsContainer from './components/views/Regions/RegionsContainer';
 import InfoContainer from './components/views/Info/InfoContainer';
@@ -50,14 +49,15 @@ class App extends React.Component {
             atActive={{ opacity: 1 }}
           >
             <Route exact path='/' component={Home} />
-            <Route exact path='/trips' component={Trips} />
-            {/* TODO - add more routes for other views DONE*/}
+            <Route path="/trips" component={props => <Trips {...props} />} />
+
+            {/*/!* TODO - add more routes for other views DONE*!/*/}
             <Route exact path='/info' component={Info} />
-            <Route exact path='/country/:id' component={CountryContainer} />
-            <Route exact path='/trip/:id' component={TripContainer} />
-            <Route exact path='/Countries' component={CountriesContainer} />
-            <Route exact path='/Regions' component={RegionsContainer} />
-            <Route exact path='/Contact' component={InfoContainer}/>
+            <Route path="/country/:id" component={props => <CountryContainer {...props} />} />
+            <Route path="/trip/:id" component={props => <TripContainer {...props} />} />
+            <Route path="/Countries" component={props => <CountriesContainer {...props} />} />
+            <Route path="/Regions" component={props => <RegionsContainer {...props} />} />
+            <Route path="/Contact" component={props => <InfoContainer {...props} />} />
             <Route path='*' component={NotFound} />
           </AnimatedSwitch>
         </MainLayout>
